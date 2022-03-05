@@ -9,9 +9,11 @@ const HomeScreens = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
   const {width} = Dimensions.get('window');
 
+  var color1 = products.map(color => color.color2);
+
   const backgroundColor = scrollX.interpolate({
-    inputRange: [0, width * 1, width * 2, width * 3, width * 4],
-    outputRange: ['#FBC6AE', '#63D8B0', '#FDD446', '#FF9A16', '#F3F1ED'],
+    inputRange: products.map((color, i) => width * i),
+    outputRange: [...color1],
   });
 
   const snapToOffsets = [0, CARD_HEIGHT];
